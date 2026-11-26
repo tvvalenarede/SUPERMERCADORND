@@ -41,7 +41,7 @@
   button{font-family:inherit;cursor:pointer;border:none;background:none}
   input{font-family:inherit}
 
-  /* ===== BANNER DA LOJA (foto RNDFRENTE.png do repositório) ===== */
+  /* ===== BANNER DA LOJA (RR6.png horizontal do repositório) ===== */
   .store-banner{
     background: linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 55%, var(--green-600) 100%);
     position: relative;
@@ -63,7 +63,7 @@
   }
   .store-banner img{
     max-width: 100%;
-    max-height: 280px;
+    max-height: 340px;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -74,7 +74,7 @@
     z-index: 1;
   }
   .store-banner:hover img{
-    transform: scale(1.025);
+    transform: scale(1.02);
     box-shadow: 0 12px 36px rgba(0,0,0,.45);
   }
   .store-banner-tag{
@@ -94,7 +94,7 @@
   }
   @media (max-width:768px){
     .store-banner{ padding: 12px 10px; }
-    .store-banner img{ max-height: 180px; }
+    .store-banner img{ max-height: 200px; }
     .store-banner-tag{ font-size:.65rem; padding: 4px 10px; top:8px; left:10px; }
   }
 
@@ -170,6 +170,132 @@
   .section-head p{color:var(--gray-500);font-size:.95rem;margin-top:4px}
   .see-all{color:var(--green-600);font-weight:700;font-size:.9rem;display:flex;align-items:center;gap:6px;transition:.2s}
   .see-all:hover{gap:10px}
+
+  /* ===== GALERIA DE FOTOS (2 em 2) ===== */
+  .photo-gallery{max-width:1280px;margin:56px auto;padding:0 20px}
+  .photo-gallery .section-head{margin-bottom:26px}
+  .photo-gallery .section-head h2{font-size:1.75rem;font-weight:900;letter-spacing:-.02em}
+  .photo-gallery .section-head p{color:var(--gray-500);font-size:.95rem;margin-top:4px}
+  .photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .photo-card{
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow-md);
+    transition:transform .3s, box-shadow .3s;
+    position:relative;
+    background:#fff;
+    display:block;
+    border:1px solid var(--gray-100);
+  }
+  .photo-card img{
+    width:100%;
+    height:100%;
+    aspect-ratio:16/10;
+    object-fit:cover;
+    display:block;
+    transition:transform .55s cubic-bezier(.34,1.56,.64,1);
+  }
+  .photo-card::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, transparent 55%, rgba(0,0,0,.4));
+    pointer-events:none;
+    opacity:.55;
+    transition:opacity .35s;
+  }
+  .photo-card:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--shadow-lg);
+  }
+  .photo-card:hover img{
+    transform:scale(1.06);
+  }
+  .photo-card:hover::after{
+    opacity:.75;
+  }
+  .photo-caption{
+    position:absolute;
+    bottom:14px;
+    left:18px;
+    color:#fff;
+    font-size:.9rem;
+    font-weight:700;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    text-shadow:0 2px 8px rgba(0,0,0,.4);
+  }
+  .photo-caption .dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--yellow-500);
+    box-shadow:0 0 0 3px rgba(250,204,21,.35);
+  }
+
+  /* ===== FOTO EM DESTAQUE (RR5) — split layout ===== */
+  .featured-photo{max-width:1280px;margin:56px auto;padding:0 20px}
+  .featured-inner{
+    display:grid;
+    grid-template-columns:1.15fr 1fr;
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow-lg);
+    background:#fff;
+    border:1px solid var(--gray-100);
+  }
+  .featured-img{position:relative;overflow:hidden;background:var(--gray-100)}
+  .featured-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    aspect-ratio:4/3;
+    display:block;
+    transition:transform .55s cubic-bezier(.34,1.56,.64,1);
+  }
+  .featured-img:hover img{transform:scale(1.05)}
+  .featured-content{
+    padding:48px 44px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:16px;
+    background:linear-gradient(135deg, #fff 0%, #fef7f7 100%);
+  }
+  .featured-content .tag{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:var(--green-100);
+    color:var(--green-700);
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:.76rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    width:fit-content;
+  }
+  .featured-content h3{
+    font-size:1.8rem;
+    font-weight:900;
+    line-height:1.2;
+    color:var(--green-900);
+    letter-spacing:-.02em;
+  }
+  .featured-content p{
+    font-size:.98rem;
+    color:var(--gray-700);
+    line-height:1.6;
+  }
+  .featured-content .featured-cta{
+    margin-top:8px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
 
   /* CATEGORY CARDS */
   .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
@@ -269,7 +395,7 @@
   .checkout-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(216,31,38,.45)}
   .checkout-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
 
-  /* TOAST — sobe pra não ficar atrás da barra flutuante */
+  /* TOAST */
   .toast-wrap{position:fixed;bottom:110px;left:50%;transform:translateX(-50%);z-index:2000;display:flex;flex-direction:column;gap:10px;pointer-events:none}
   .toast{background:var(--gray-900);color:#fff;padding:14px 22px;border-radius:12px;font-size:.9rem;font-weight:600;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-lg);animation:slideUp .3s cubic-bezier(.34,1.56,.64,1);pointer-events:auto;border-left:4px solid var(--green-500)}
   .toast.error{border-left-color:var(--red-500)}
@@ -348,6 +474,8 @@
     .hero-inner{grid-template-columns:1fr;padding:40px 28px}
     .hero h1{font-size:2.1rem}
     .footer-inner{grid-template-columns:1fr 1fr;gap:32px}
+    .featured-inner{grid-template-columns:1fr}
+    .featured-img img{aspect-ratio:16/9}
   }
   @media (max-width:768px){
     .header-main{grid-template-columns:1fr auto;gap:12px}
@@ -357,8 +485,8 @@
     .hero h1{font-size:1.7rem}
     .hero-benefits{grid-template-columns:1fr}
     .topbar-right .hide-mobile{display:none}
-    .section{margin:40px auto}
-    .section-head h2{font-size:1.4rem}
+    .section, .photo-gallery, .featured-photo{margin:40px auto}
+    .section-head h2, .photo-gallery .section-head h2{font-size:1.4rem}
     .product-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
     .product-media{font-size:3.5rem}
     .product-name{font-size:.88rem}
@@ -367,6 +495,10 @@
     .promo-strip-inner{padding:28px 24px}
     .promo-strip h3{font-size:1.3rem}
     .footer-bottom{padding:24px 20px 100px}
+    .photo-grid{grid-template-columns:1fr;gap:14px}
+    .photo-card img{aspect-ratio:16/9}
+    .featured-content{padding:30px 24px}
+    .featured-content h3{font-size:1.4rem}
     .float-stack{bottom:14px;gap:10px;padding:8px 12px}
     .float-btn{width:46px;height:46px}
     .float-btn svg{width:22px;height:22px}
@@ -385,14 +517,14 @@
 <body>
 
 <!-- =========================================================
-     BANNER DA LOJA — foto RNDFRENTE.png do repositório
+     BANNER DA LOJA — RR6.png (formato horizontal)
      ========================================================= -->
 <div class="store-banner" onclick="scrollToProducts()" role="button" tabindex="0" aria-label="Foto da loja RND - ir para ofertas">
   <span class="store-banner-tag">🏪 Nossa loja</span>
   <img
-    src="RNDFRENTE.png"
+    src="RR6.png"
     alt="Supermercado RND - Jardim Continental, Taubaté"
-    onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/tvvalenarede/SUPERMERCADORND/main/RNDFRENTE.png'">
+    onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/tvvalenarede/SUPERMERCADORND/main/RR6.png'">
 </div>
 
 <!-- TOP BAR -->
@@ -469,6 +601,30 @@
   </div>
 </section>
 
+<!-- =========================================================
+     GALERIA 1 — RR1 + RR2 (2 em 2)
+     ========================================================= -->
+<section class="photo-gallery">
+  <div class="section-head">
+    <div>
+      <h2>📸 Conheça nossa loja</h2>
+      <p>Um espaço preparado com carinho para você</p>
+    </div>
+  </div>
+  <div class="photo-grid">
+    <div class="photo-card">
+      <img src="RR1.png" alt="Supermercado RND - Vista interna"
+           onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/tvvalenarede/SUPERMERCADORND/main/RR1.png'">
+      <div class="photo-caption"><span class="dot"></span>Nossa loja</div>
+    </div>
+    <div class="photo-card">
+      <img src="RR2.png" alt="Supermercado RND - Corredores e produtos"
+           onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/tvvalenarede/SUPERMERCADORND/main/RR2.png'">
+      <div class="photo-caption"><span class="dot"></span>Variedade de produtos</div>
+    </div>
+  </div>
+</section>
+
 <!-- CATEGORIAS -->
 <section class="section">
   <div class="section-head">
@@ -492,6 +648,30 @@
   <div class="product-grid" id="productGrid"></div>
 </section>
 
+<!-- =========================================================
+     GALERIA 2 — RR3 + RR4 (2 em 2)
+     ========================================================= -->
+<section class="photo-gallery">
+  <div class="section-head">
+    <div>
+      <h2>🛒 Ambiente e qualidade</h2>
+      <p>Produtos frescos e atendimento de confiança</p>
+    </div>
+  </div>
+  <div class="photo-grid">
+    <div class="photo-card">
+      <img src="RR3.png" alt="Supermercado RND - Atendimento"
+           onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/tvvalenarede/SUPERMERCADORND/main/RR3.png'">
+      <div class="photo-caption"><span class="dot"></span>Atendimento</div>
+    </div>
+    <div class="photo-card">
+      <img src="RR4.png" alt="Supermercado RND - Seções da loja"
+           onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/tvvalenarede/SUPERMERCADORND/main/RR4.png'">
+      <div class="photo-caption"><span class="dot"></span>Seções da loja</div>
+    </div>
+  </div>
+</section>
+
 <!-- PROMO STRIP -->
 <section class="promo-strip">
   <div class="promo-strip-inner">
@@ -500,6 +680,27 @@
       <p>Leve carvão, linguiça, pão de alho e refrigerante em um só clique.</p>
     </div>
     <button class="btn" onclick="scrollToProducts()">Aproveitar agora</button>
+  </div>
+</section>
+
+<!-- =========================================================
+     FOTO EM DESTAQUE — RR5 (split com CTA)
+     ========================================================= -->
+<section class="featured-photo">
+  <div class="featured-inner">
+    <div class="featured-img">
+      <img src="RR5.png" alt="Supermercado RND - Venha nos visitar"
+           onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/tvvalenarede/SUPERMERCADORND/main/RR5.png'">
+    </div>
+    <div class="featured-content">
+      <span class="tag">🏪 Visite-nos</span>
+      <h3>Venha conhecer o RND de pertinho</h3>
+      <p>Estamos no Jardim Continental, prontos para te atender com produtos de qualidade, preços justos e aquele atendimento que você já conhece.</p>
+      <div class="featured-cta">
+        <a href="https://wa.me/5512997690407" target="_blank" class="btn btn-primary">💬 Falar no WhatsApp</a>
+        <a href="#contato" class="btn btn-ghost" style="background:var(--green-100);color:var(--green-700);border:1px solid var(--green-100)">📍 Ver endereços</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -629,26 +830,20 @@
 
 <!-- =========================================================
      BOTÕES FLUTUANTES — HORIZONTAL, CENTRALIZADOS NA BASE
-     WhatsApp | Instagram | Facebook
      ========================================================= -->
 <div class="float-stack" aria-label="Redes sociais e atendimento">
-  <!-- WhatsApp (verde) -->
   <a href="https://wa.me/5512997690407" target="_blank" rel="noopener"
      class="float-btn wa" data-tip="Pedir pelo WhatsApp" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
     </svg>
   </a>
-
-  <!-- Instagram (vermelho) → @tvvalenarede -->
   <a href="https://instagram.com/tvvalenarede" target="_blank" rel="noopener"
      class="float-btn ig" data-tip="Instagram @tvvalenarede" aria-label="Instagram">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
     </svg>
   </a>
-
-  <!-- Facebook (azul) → TVRBRAZIL -->
   <a href="https://facebook.com/TVRBRAZIL" target="_blank" rel="noopener"
      class="float-btn fb" data-tip="Facebook TVRBRAZIL" aria-label="Facebook">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -660,13 +855,9 @@
 <script>
 /* =========================================================
    CONFIGURAÇÃO CENTRAL
-   Número do WhatsApp que RECEBE os pedidos (DDI + DDD)
    ========================================================= */
 const WHATSAPP_NUMBER = '5512997690407'; // (12) 99769-0407 ✅
 
-/* =========================================================
-   DADOS - Categorias e Produtos
-   ========================================================= */
 const CATEGORIES = [
   { id:'graos',    name:'Grãos & Cereais', emoji:'🌾', desc:'Arroz, feijão, milho' },
   { id:'bebidas',  name:'Bebidas',         emoji:'🥤', desc:'Refrigerantes, sucos' },
